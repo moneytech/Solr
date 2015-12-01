@@ -39,13 +39,13 @@ murmur_str(char* data){
  *
  * =========================================
  */
+typedef struct solr_gc solr_gc;
 typedef struct solr_vm solr_vm;
 typedef struct solr_object solr_object;
 typedef struct solr_class solr_class;
 typedef struct solr_field solr_field;
 typedef struct solr_method solr_method;
 typedef unsigned char solr_byte;
-typedef solr_object* (*solr_func)(solr_vm* vm, solr_object* self);
 
 typedef struct solr_symbol{
     char* name;
@@ -54,6 +54,7 @@ typedef struct solr_symbol{
 
 solr_symbol* solr_symbol_new(char* sym);
 int solr_symbol_equals(solr_symbol* self, char* name);
+int solr_symbol_equal(solr_symbol* self, solr_symbol* other);
 
 HEADER_END
 

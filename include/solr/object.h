@@ -39,8 +39,6 @@ solr_vtype_box(solr_vm* vm, solr_field_vtype vtype){
     }
 }
 
-solr_field* solr_field_primative_new(solr_vm* vm, solr_field_vtype vtype, char* name);
-
 HEADER_END
 
 #endif

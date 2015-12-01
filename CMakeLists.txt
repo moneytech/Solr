@@ -3,4 +3,4 @@ project(Solr)
 
 include_directories(include)
 
-add_executable(Solr main.c include/solr/object.h include/solr/common.h src/murmur.c include/solr/class.h src/symbol.c include/solr/vm.h src/vm.c src/class.c include/solr/method.h include/solr/opcode.h src/method.c)
+add_executable(Solr main.c include/solr/object.h include/solr/common.h src/murmur.c include/solr/class.h src/symbol.c include/solr/vm.h src/vm.c src/class.c include/solr/opcode.h include/solr/gc.h src/gc.c)
