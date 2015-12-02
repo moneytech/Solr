@@ -26,17 +26,28 @@ solr_vm_new(){
     vm->classpool->root = NULL;
     vm->classpool->size = 0;
 
-    vm->class_object = solr_define_class(vm, "Object", NULL);
+    vm->class_object = solr_define_class(vm, "Object", NULL, 1);
+    solr_class_init(vm, vm->class_object);
     solr_gc_add_single_ref(vm->gc, &vm->class_object);
-    vm->class_string = solr_define_class(vm, "String", vm->class_object);
+
+    vm->class_string = solr_define_class(vm, "String", vm->class_object, 0);
+    solr_class_init(vm, vm->class_string);
     solr_gc_add_single_ref(vm->gc, &vm->class_string);
-    vm->class_class = solr_define_class(vm, "Class", vm->class_object);
+
+    vm->class_class = solr_define_class(vm, "Class", vm->class_object, 0);
+    solr_class_init(vm, vm->class_class);
     solr_gc_add_single_ref(vm->gc, &vm->class_class);
-    vm->class_fixnum = solr_define_class(vm, "Fixnum", vm->class_object);
+
+    vm->class_fixnum = solr_define_class(vm, "Fixnum", vm->class_object, 0);
+    solr_class_init(vm, vm->class_fixnum);
     solr_gc_add_single_ref(vm->gc, &vm->class_fixnum);
-    vm->class_flonum = solr_define_class(vm, "Flonum", vm->class_object);
+
+    vm->class_flonum = solr_define_class(vm, "Flonum", vm->class_object, 0);
+    solr_class_init(vm, vm->class_flonum);
     solr_gc_add_single_ref(vm->gc, &vm->class_flonum);
-    vm->class_char = solr_define_class(vm, "Character", vm->class_object);
+
+    vm->class_char = solr_define_class(vm, "Character", vm->class_object, 0);
+    solr_class_init(vm, vm->class_char);
     solr_gc_add_single_ref(vm->gc, &vm->class_char);
     return vm;
 }

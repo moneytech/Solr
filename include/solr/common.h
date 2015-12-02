@@ -19,7 +19,7 @@ HEADER_BEGIN
  * ------------ Murmur Hash ----------------
  *
  * Murmur-Hash for symbols preferably use:
- *  uint32_t murmur_str(char*, size_t);
+ *  uint32_t murmur_str(char*);
  *
  * ========================================
  */
@@ -55,6 +55,10 @@ typedef struct solr_symbol{
 solr_symbol* solr_symbol_new(char* sym);
 int solr_symbol_equals(solr_symbol* self, char* name);
 int solr_symbol_equal(solr_symbol* self, solr_symbol* other);
+
+#define FIXNUM_SIZE (sizeof(long))
+#define FLONUM_SIZE (sizeof(double))
+#define CHAR_SIZE (sizeof(char))
 
 HEADER_END
 
