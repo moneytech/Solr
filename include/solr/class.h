@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "object.h"
+#include "function.h"
 
 struct solr_class{
     solr_class* super;
@@ -10,11 +11,15 @@ struct solr_class{
     int prototypes_count;
     solr_symbol* name;
     unsigned int object_size;
+
     solr_field* fields;
     unsigned int fields_count;
+
+    solr_method* methods;
+    unsigned int methods_count;
 };
 
-solr_class* solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count);
+solr_class* solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count, int methods_count);
 void solr_class_init(solr_vm* vm, solr_class* class);
 void solr_class_define_field(solr_class* class, char* name, solr_field_vtype vtype);
 int solr_class_assignable(solr_class* self, solr_class* other);

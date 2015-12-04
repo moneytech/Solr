@@ -2,6 +2,7 @@
 #include <solr/vm.h>
 #include <stdlib.h>
 #include <solr/object.h>
+#include <solr/function.h>
 
 typedef struct{
     unsigned int fields_count;
@@ -31,7 +32,7 @@ buckets_order_fields(field_bucket buckets[VT_MAX], unsigned int* refs_size, unsi
 }
 
 solr_class*
-solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count){
+solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count, int methods_count){
     solr_symbol* sym = solr_symbol_new(name);
     if(solr_vm_has_class(vm, sym)){
         free(sym->name);
@@ -43,6 +44,9 @@ solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count){
     class->name = sym;
     class->prototypes_count = 0;
     class->fields = malloc(sizeof(solr_field) * fields_count);
+    if(super){
+        class->object_size = super->object_size;
+    }
     solr_vm_define_class(vm, class);
     return class;
 }
@@ -111,7 +115,6 @@ solr_class_get_field(solr_class* class, char* name){
             return &class->fields[i];
         }
     }
-
     return NULL;
 }
 

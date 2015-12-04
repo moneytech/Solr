@@ -45,6 +45,7 @@ typedef struct solr_object solr_object;
 typedef struct solr_class solr_class;
 typedef struct solr_field solr_field;
 typedef struct solr_method solr_method;
+typedef struct solr_native solr_native;
 typedef unsigned char solr_byte;
 
 typedef struct solr_symbol{

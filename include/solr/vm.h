@@ -2,6 +2,7 @@
 #define SOLR_VM_H
 
 #include "common.h"
+#include "function.h"
 
 HEADER_BEGIN
 
@@ -27,6 +28,8 @@ void* solr_vm_gc_alloc(solr_vm* vm, int size);
 solr_class* solr_vm_lookup_class(solr_vm* vm, char* name);
 void solr_vm_define_class(solr_vm* vm, solr_class* class);
 int solr_vm_has_class(solr_vm* vm, solr_symbol* sym);
+
+solr_object* solr_vm_run(solr_vm* vm, solr_method* method, solr_object* self);
 
 HEADER_END
 

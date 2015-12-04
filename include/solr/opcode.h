@@ -6,7 +6,8 @@
 HEADER_BEGIN
 
 typedef enum{
-    OP_NOP = 1
+    OP_NOP = 1,
+    OP_INVOKENATIVE,
 } solr_opcode;
 
 HEADER_END
