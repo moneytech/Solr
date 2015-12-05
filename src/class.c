@@ -22,7 +22,7 @@ static void bucket_order_fields(field_bucket* bucket, unsigned int size, unsigne
 #define ALIGN(obj, size) ((unsigned int)(((obj)+size)&~size))
 
 static void
-buckets_order_fields(field_bucket buckets[VT_MAX], unsigned int* refs_size, unsigned int* size){
+buckets_order_fields(field_bucket buckets[], unsigned int *size) {
     unsigned int offset = *size;
     offset = ALIGN(offset, 8);
     bucket_order_fields(&buckets[VT_FIXNUM], FIXNUM_SIZE, &offset);
@@ -32,7 +32,7 @@ buckets_order_fields(field_bucket buckets[VT_MAX], unsigned int* refs_size, unsi
 }
 
 solr_class*
-solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count, int methods_count){
+solr_define_class(solr_vm* vm, char* name, solr_class* super, int fields_count){
     solr_symbol* sym = solr_symbol_new(name);
     if(solr_vm_has_class(vm, sym)){
         free(sym->name);
@@ -72,8 +72,7 @@ solr_class_init(solr_vm* vm, solr_class* class){
         field_bucket* bucket = &buckets[field->vtype];
         bucket->fields[bucket->fields_count++] = field;
     }
-    unsigned int tmp;
-    buckets_order_fields(buckets, &tmp, &class->object_size);
+    buckets_order_fields(buckets, &class->object_size);
 }
 
 int
